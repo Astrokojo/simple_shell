@@ -42,7 +42,7 @@ int main(void)
 		}
 
 		argv = malloc((user_input + 1) * sizeof(*argv));
-		
+
 		if (argv == NULL)
 		{
 			perror("malloc");
@@ -89,14 +89,14 @@ int main(void)
 		
 		else
 		{
-			wait(&status);
-			for (int i = 0; i < argc; i++)
-				free(argv[i]);
-			free(argv);
+			wait(NULL);
 		}
+		for (int i = 0; i < argc; i++)
+			free(argv[i]);
+		free(argv);
+		free(buf);
+		buf = NULL;
+
 	}
-
-	free(buf);
-
 	return (0);
 }
