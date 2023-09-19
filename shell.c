@@ -12,8 +12,8 @@ int main(void)
 	size_t n = 0;
 	ssize_t user_input;
 	char *token;
-	char *delim = " \n";
-	char **argv;
+	const char *delim = " \n";
+	char **argv = NULL;
 	int argc = 0;
 	pid_t pid;
 	int status;
@@ -21,13 +21,12 @@ int main(void)
 	while (1)
 	{
 		printf("$ ");
-		
+
 		user_input = getline(&buf, &n, stdin);
-		
+
 		if (user_input == -1)
 		{
 			if (feof(stdin))
-				
 			{
 				printf("\n");
 				break;
@@ -41,8 +40,8 @@ int main(void)
 			}
 		}
 
-		argv = malloc((user_input + 1) * sizeof(*argv));
-		
+		argv = malloc((size_t)(user_input + 1) * sizeof(*argv));
+
 		if (argv == NULL)
 		{
 			perror("malloc");
@@ -71,12 +70,12 @@ int main(void)
 			free(argv);
 			exit(1);
 		}
-		
+
 		else if (pid == 0)
 		{
-			int  exec = execve(argv[0], argv, NULL);
-			
-			if (exec == -1)
+			int exe = execve(argv[0], argv, NULL);
+
+			if (exe == -1)
 			{
 				perror("Error: Execve failed");
 				free(buf);
@@ -86,17 +85,16 @@ int main(void)
 				exit(1);
 			}
 		}
-		
+
 		else
 		{
-			wait(&status);
+			wait(NULL);
+			
 			for (int i = 0; i < argc; i++)
 				free(argv[i]);
 			free(argv);
+			free(buf);
 		}
 	}
-
-	free(buf);
-
 	return (0);
 }
