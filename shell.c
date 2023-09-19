@@ -89,12 +89,12 @@ int main(void)
 		else
 		{
 			wait(NULL);
+			
+			for (int i = 0; i < argc; i++)
+				free(argv[i]);
+			free(argv);
+			free(buf);
 		}
-		for (int i = 0; i < argc; i++)
-			free(argv[i]);
-		free(argv);
-		free(buf);
-		buf = NULL;
 	}
 	return (0);
 }
