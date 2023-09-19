@@ -10,7 +10,7 @@ int main(void)
 {
 	char *buf = NULL;
 	size_t n = 0;
-	ssize_t user_input;
+	int user_input;
 	char *token;
 	const char *delim = " \n";
 	char **argv = NULL;
@@ -35,17 +35,15 @@ int main(void)
 			else
 			{
 				perror("getline");
-				free(buf);
 				exit(1);
 			}
 		}
 
-		argv = malloc((size_t)(user_input + 1) * sizeof(*argv));
+		argv = malloc(sizeof(char *) * (user_input + 1));
 
 		if (argv == NULL)
 		{
 			perror("malloc");
-			free(buf);
 			exit(1);
 		}
 
@@ -53,8 +51,9 @@ int main(void)
 
 		while (token)
 		{
-			argv[argc++] = strdup(token);
+			argv[argc] = strdup(token);
 			token = strtok(NULL, delim);
+			argc++;
 		}
 
 		argv[argc] = NULL;
@@ -64,10 +63,6 @@ int main(void)
 		if (pid == -1)
 		{
 			perror("pid did not fork");
-			free(buf);
-			for (int i = 0; i < argc; i++)
-				free(argv[i]);
-			free(argv);
 			exit(1);
 		}
 
@@ -78,23 +73,17 @@ int main(void)
 			if (exe == -1)
 			{
 				perror("Error: Execve failed");
-				free(buf);
-				for (int i = 0; i < argc; i++)
-					free(argv[i]);
-				free(argv);
 				exit(1);
 			}
 		}
 
 		else
-		{
 			wait(NULL);
-			
-			for (int i = 0; i < argc; i++)
-				free(argv[i]);
-			free(argv);
-			free(buf);
-		}
+
+		argc = 0;
+		free(argv);
 	}
+	free(buf);
+
 	return (0);
 }
