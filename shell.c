@@ -20,7 +20,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("$ ");
+		shell_prompt();
 
 		user_input = getline(&buf, &n, stdin);
 
