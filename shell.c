@@ -59,7 +59,6 @@ int main(void)
 		argv[argc] = NULL;
 
 		pid = fork();
-		
 		if (pid == -1)
 		{
 			perror("pid did not fork");
