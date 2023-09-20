@@ -1,3 +1,4 @@
+#include "header.h"
 int get_input(char **buf)
 {
 	size_t n = 0;
