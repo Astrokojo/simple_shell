@@ -10,8 +10,6 @@ int main(void)
 {
 	char *buf = NULL;
 	int user_input;
-	char *token;
-	const char *delim = " \n";
 	char **argv = NULL;
 	int argc = 0;
 	pid_t pid;
@@ -31,16 +29,7 @@ int main(void)
 			exit(1);
 		}
 
-		token = strtok(buf, delim);
-
-		while (token)
-		{
-			argv[argc] = strdup(token);
-			token = strtok(NULL, delim);
-			argc++;
-		}
-
-		argv[argc] = NULL;
+	 	cmd_token(buf, argv);
 
 		pid = fork();
 		if (pid == -1)
@@ -61,7 +50,7 @@ int main(void)
 		}
 
 		else
-			wait(NULL);
+			wait(&status);
 
 		argc = 0;
 		free(argv);
