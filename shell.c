@@ -29,28 +29,9 @@ int main(void)
 			exit(1);
 		}
 
-	 	cmd_token(buf, argv);
+		cmd_token(buf, argv);
 
-		pid = fork();
-		if (pid == -1)
-		{
-			perror("pid did not fork");
-			exit(1);
-		}
-
-		else if (pid == 0)
-		{
-			int exe = execve(argv[0], argv, NULL);
-
-			if (exe == -1)
-			{
-				perror("Error: Execve failed");
-				exit(1);
-			}
-		}
-
-		else
-			wait(&status);
+		cmd_exe(argv);
 
 		argc = 0;
 		free(argv);

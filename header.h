@@ -13,5 +13,6 @@
 void shell_prompt(void);
 int get_input(char **buf);
 void cmd_token(char *buf, char *argv[]);
+void cmd_exe(char *argv[]);
 
 #endif /* MAIN_H*/
