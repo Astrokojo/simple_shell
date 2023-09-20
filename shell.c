@@ -9,7 +9,6 @@
 int main(void)
 {
 	char *buf = NULL;
-	size_t n = 0;
 	int user_input;
 	char *token;
 	const char *delim = " \n";
@@ -22,22 +21,7 @@ int main(void)
 	{
 		shell_prompt();
 
-		user_input = getline(&buf, &n, stdin);
-
-		if (user_input == -1)
-		{
-			if (feof(stdin))
-			{
-				printf("\n");
-				break;
-			}
-
-			else
-			{
-				perror("getline");
-				exit(1);
-			}
-		}
+		user_input = get_input(&buf);
 
 		argv = malloc(sizeof(char *) * (user_input + 1));
 
