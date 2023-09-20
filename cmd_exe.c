@@ -1,5 +1,5 @@
 #include "header.h"
-void cmd_exec(char *argv[])
+void cmd_exe(char *argv[])
 {
 	pid_t pid;
 	int status;

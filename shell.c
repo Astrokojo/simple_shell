@@ -12,8 +12,6 @@ int main(void)
 	int user_input;
 	char **argv = NULL;
 	int argc = 0;
-	pid_t pid;
-	int status;
 
 	while (1)
 	{
