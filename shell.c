@@ -11,7 +11,6 @@ int main(void)
 	char *buf = NULL;
 	int user_input;
 	char **argv = NULL;
-	int argc = 0;
 
 	while (1)
 	{
@@ -31,7 +30,6 @@ int main(void)
 
 		cmd_exe(argv);
 
-		argc = 0;
 		free(argv);
 	}
 	free(buf);
