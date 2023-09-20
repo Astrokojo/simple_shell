@@ -10,5 +10,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-void prompt_user(void);
+void shell_prompt(void);
+int get_input(char **buf);
+
 #endif /* MAIN_H*/
