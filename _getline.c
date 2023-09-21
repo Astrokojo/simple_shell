@@ -31,7 +31,7 @@ ssize_t input_buf(shell_info_t *shell_info, char **buf, size_t *len)
 				b--;
 			}
 			shell_info->linecount_flag = 1;
-			remove_comments(*buf);
+			remove_comment(*buf);
 			compile_hist(shell_info, *buf, shell_info->histcount++);
 			{
 				*len = b;

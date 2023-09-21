@@ -1,11 +1,11 @@
-#include "my_custom_shell.h"
+#include "header.h"
 
 /**
  * print_sh_hist - prints the history list
  * @info: input value
  *  Return: Always 0
  */
-int print_sh_hist(info_t *info)
+int print_sh_hist(shell_info_t *info)
 {
 	print_list(info->history);
 	return (0);
@@ -18,7 +18,7 @@ int print_sh_hist(info_t *info)
  *
  * Return: Always 0 on success, 1 on error
  */
-int unset_alias(info_t *info, char *str)
+int unset_alias(shell_info_t *info, char *str)
 {
 	char *ptr, c;
 	int unset;
@@ -41,7 +41,7 @@ int unset_alias(info_t *info, char *str)
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(info_t *info, char *str)
+int set_alias(shell_info_t *info, char *str)
 {
 	char *ptr;
 
@@ -49,9 +49,9 @@ int set_alias(info_t *info, char *str)
 	if (!ptr)
 		return (1);
 	if (!*++ptr)
-		return (unset_alias(info, str));
+		return (unset_alias(shell_info, str));
 
-	unset_alias(info, str);
+	unset_alias(shell_info, str);
 	return (add_node_end(&(info->alias), str, 0) == NULL);
 }
 
@@ -83,7 +83,7 @@ int print_alias(list_t *node)
  * @info: the param and struct
  *  Return: Always 0
  */
-int _alias(info_t *info)
+int _alias(shell_info_t *info)
 {
 	int i = 0;
 	char *ptr = NULL;

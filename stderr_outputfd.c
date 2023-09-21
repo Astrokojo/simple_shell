@@ -1,4 +1,4 @@
-#include "my_custom_shell.h"
+#include "header.h"
 
 
 /**
@@ -10,14 +10,14 @@
 int _puttchar(char c)
 {
 	static int i;
-	static char buf[BUFF_SIZE];
+	static char buf[BUF_SIZE];
 
-	if (c == BUFF_FLUSH || i >= BUFF_SIZE)
+	if (c == BUF_FLUSH || i >= BUF_SIZE)
 	{
 		write(2, buf, i);
 		i = 0;
 	}
-	if (c != BUFF_FLUSH)
+	if (c != BUF_FLUSH)
 		buf[i++] = c;
 	return (1);
 }
@@ -49,14 +49,14 @@ void _putts(char *str)
 int _putcharfd(char c, int fd)
 {
 	static int i;
-	static char buf[BUFF_SIZE];
+	static char buf[BUF_SIZE];
 
-	if (c == BUFF_FLUSH || i >= BUFF_SIZE)
+	if (c == BUF_FLUSH || i >= BUF_SIZE)
 	{
 		write(fd, buf, i);
 		i = 0;
 	}
-	if (c != BUFF_FLUSH)
+	if (c != BUF_FLUSH)
 		buf[i++] = c;
 	return (1);
 }

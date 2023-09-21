@@ -37,7 +37,7 @@ int _erratoi(char *str)
  * @estr: string that shows error type
  * Return: 0 success, otherwise -1 on error
  */
-void print_error(info_t *info, char *estr)
+void print_error(shell_info_t *info, char *estr)
 {
 	_putts(info->fname);
 	_putts(": ");

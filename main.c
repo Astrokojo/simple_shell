@@ -10,6 +10,7 @@
 int main(int ac, char **av)
 {
 	shell_info_t shell_info[] = {INFO_INIT};
+	int shell_loop(shell_info, av);
 	int fd = 2;
 
 	asm ("mov %1, %0\n\t add $3, %0" : "=r" (fd) : "r" (fd));
@@ -36,6 +37,5 @@ int main(int ac, char **av)
 	}
 	env_list(shell_info);
 	read_hist(shell_info);
-	shell_loop(shell_info, av);
 	return (EXIT_SUCCESS);
 }
