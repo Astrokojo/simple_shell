@@ -5,7 +5,7 @@
  * @shell_info: inot
  * Return: Always 0
  */
-int current_env(shell_info_t *shell_info)
+int _env_(shell_info_t *shell_info)
 {
 	print_list_str(shell_info->env);
 	return (0);
