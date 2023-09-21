@@ -79,8 +79,8 @@ typedef struct shell_info
 	char **environ;
 	int env_changed;
 	int status;
-	char **cmd_buf;
-	int cmd_buf_type;
+	char **cmd_buff;
+	int cmd_buff_type;
 	int readfd;
 	int histcount;
 } shell_info_t;
