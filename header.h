@@ -38,7 +38,27 @@ typedef struct list_str
 	char *str;
 	struct list_str *next;
 }list_t;
-
+/**
+ *struct shell_info - contains pseudo-argu to pass into the shell,.
+ *@alias: the alias node
+ *@arg: a string generated from getline containing arguements
+ *@argc: the argument count
+ *@argv: an array of strings generated from arg
+ *@counter: the error count
+ *@errors: the error code for exit()s
+ *@env: linked_list copy of environ in the shell
+ *@environ:  of environ from LL env
+ *@env_changed: on if environ was changed
+ *@fname: the program filename
+ *@history: the history node
+ *@path: a string path for the current command
+ *@linecount_flag: if on count this line of input
+ *@status: the return status of the last exec'd command
+ *@cmd_buf: address of pointer to cmd_buf, on if chaining
+ *@cmd_buf_type: CMD_type `||, &&, ;`
+ *@readfd:fd from which to read input
+ *@histcount: the history line number count
+ */
 typedef struct shell_info
 {
 	char *arg;
@@ -119,7 +139,6 @@ void check_chain(shell_info_t *, char *, size_t *, size_t, size_t);
 int _alias(shell_info_t *);
 int set_alias(shell_info_t *shell_info, char *str);
 int unset_alias(shell_info_t *shell_info, char *str);
-int print_alias(list_t *node);
 int replace_alias(shell_info_t *shell_info);
 int replace_vars(shell_info_t *);
 int replace_string(char **, char *);
