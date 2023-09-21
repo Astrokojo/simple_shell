@@ -87,11 +87,11 @@ typedef struct shell_info
 
 #define INFO_INIT {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
 
-typedef struct shell_cmd
+typedef struct built_in
 {
 	char *type;
 	int (*func)(shell_info_t *);
-} cmd_tab;
+} builtin_tbl;
 
 /* Standard Library Prototypes */
 int _strcmp(char *, char *);
