@@ -99,7 +99,7 @@ void cmd_path(shell_info_t *info)
 	if (!key)
 		return;
 
-	path = search_path(info, _getenv(info, "PATH="), info->argv[0]);
+	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
