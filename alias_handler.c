@@ -28,8 +28,8 @@ int unset_alias(shell_info_t *info, char *str)
 		return (1);
 	c = *ptr;
 	*ptr = 0;
-	unset = delete_node_at_index(&(info->alias),
-		get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
+	unset = del_at_index(&(info->alias),
+		at_index(info->alias, node_starts_with(info->alias, str, -1)));
 	*ptr = c;
 	return (unset);
 }
@@ -49,9 +49,9 @@ int set_alias(shell_info_t *info, char *str)
 	if (!ptr)
 		return (1);
 	if (!*++ptr)
-		return (unset_alias(shell_info, str));
+		return (unset_alias(info, str));
 
-	unset_alias(shell_info, str);
+	unset_alias(info, str);
 	return (add_node_end(&(info->alias), str, 0) == NULL);
 }
 

@@ -35,7 +35,7 @@ ssize_t input_buf(shell_info_t *shell_info, char **buf, size_t *len)
 			compile_hist(shell_info, *buf, shell_info->histcount++);
 			{
 				*len = b;
-				shell_info->cmd_buf = buf;
+				shell_info->cmd_buff = buf;
 			}
 		}
 	}
@@ -55,7 +55,7 @@ ssize_t get_input(shell_info_t *shell_info)
 	ssize_t r = 0;
 	char **buf_p = &(shell_info->arg), *p;
 
-	_putchar(BUF_FLUSH);
+	_putchar(BUFF_FLUSH);
 	r = input_buf(shell_info, &buf, &len);
 	if (r == -1)
 		return (-1);
@@ -76,7 +76,7 @@ ssize_t get_input(shell_info_t *shell_info)
 		if (i >= len)
 		{
 			i = len = 0;
-			shell_info->cmd_buf_type = CMD_NORM;
+			shell_info->cmd_buff_type = CMD_NORM;
 		}
 
 		*buf_p = p;
@@ -101,7 +101,7 @@ ssize_t read_buf(shell_info_t *shell_info, char *buf, size_t *i)
 
 	if (*i)
 		return (0);
-	r = read(shell_info->readfd, buf, BUF_SIZE);
+	r = read(shell_info->readfd, buf, BUFF_SIZE);
 	if (r >= 0)
 		*i = r;
 	return (r);
@@ -117,7 +117,7 @@ ssize_t read_buf(shell_info_t *shell_info, char *buf, size_t *i)
  */
 int _getline(shell_info_t *shell_info, char **ptr, size_t *length)
 {
-	static char buf[BUF_SIZE];
+	static char buf[BUFF_SIZE];
 	static size_t i, len;
 	size_t k;
 	ssize_t r = 0, s = 0;
@@ -151,6 +151,5 @@ int _getline(shell_info_t *shell_info, char **ptr, size_t *length)
 	if (length)
 		*length = s;
 	*ptr = p;
-	return (s);
+	return (s):
 }
-

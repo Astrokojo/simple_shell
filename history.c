@@ -25,6 +25,46 @@ char *get_hist(shell_info_t *shell_info)
 	return (buf);
 }
 
+/**
+ * compile_hist - adds an entry to a history linked list
+ * @shell_info: ditto
+ * @buf: buffer value
+ * @linecount: the history linecount
+ *
+ *
+ * Return: Always 0
+ */
+int compile_hist(shell_info_t *shell_info, char *buf, int linecount)
+{
+	list_t *node = NULL;
+
+	if (shell_info->history)
+		node = shell_info->history;
+	add_node_end(&node, buf, linecount);
+
+	if (!shell_info->history)
+		shell_info->history = node;
+	return (0);
+}
+/**
+ * update_hist - function updates the history linked lists
+ * @shell_info: dito
+ *
+ *
+ * Return: the updated history list
+ */
+int update_hist(shell_info_t *shell_info)
+{
+	list_t *node = shell_info->history;
+	int x = 0;
+
+	while (node)
+	{
+		node->i = x++;
+		node = node->next;
+	}
+	return (shell_info->histcount = x);
+}
 
 /**
  * read_hist - reads history from file
@@ -102,48 +142,8 @@ int write_hist(shell_info_t *shell_info)
 		_putsfd(node->str, fd);
 		_putfd('\n', fd);
 	}
-	_putfd(BUF_FLUSH, fd);
+	_putfd(BUFF_FLUSH, fd);
 	close(fd);
 	return (1);
 }
-/**
- * compile_hist - adds an entry to a history linked list
- * @shell_info: ditto
- * @buf: buffer value
- * @linecount: the history linecount
- *
- *
- * Return: Always 0
- */
-int compile_hist(shell_info_t *shell_info, char *buf, int linecount)
-{
-	list_t *node = NULL;
 
-	if (shell_info->history)
-		node = shell_info->history;
-	add_node_end(&node, buf, linecount);
-
-	if (!shell_info->history)
-		shell_info->history = node;
-	return (0);
-}
-
-/**
- * update_hist - function updates the history linked lists
- * @shell_info: dito
- *
- *
- * Return: the updated history list
- */
-int update_hist(shell_info_t *shell_info)
-{
-	list_t *node = shell_info->history;
-	int x = 0;
-
-	while (node)
-	{
-		node->i = x++;
-		node = node->next;
-	}
-	return (shell_info->histcount = x);
-}

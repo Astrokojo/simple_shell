@@ -56,7 +56,7 @@ void free_shell_info(shell_info_t *shell_info, int all)
 	shell_info->path = NULL;
 	if (all)
 	{
-		if (!shell_info->cmd_buf)
+		if (!shell_info->cmd_buff)
 			free(shell_info->arg);
 		if (shell_info->env)
 			free_list(&(shell_info->env));
@@ -66,7 +66,7 @@ void free_shell_info(shell_info_t *shell_info, int all)
 			free_list(&(shell_info->alias));
 		free_str_arr(shell_info->environ);
 			shell_info->environ = NULL;
-		freeptr((void **)shell_info->cmd_buf);
+		freeptr((void **)shell_info->cmd_buff);
 		if (shell_info->readfd > 2)
 			close(shell_info->readfd);
 		_putchar(BUF_FLUSH);

@@ -12,16 +12,14 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 
-#define BUF_SIZE 1024
-#define BUF_FLUSH -1
+#define BUFF_SIZE 1024
+#define BUFF_FLUSH -1
 
 #define CMD_NORM	0
-#define CMD_OR		1
-#define CMD_AND 	2
-#define CMD_CHAIN	3
+#define OR		1
+#define AND 		2
+#define SEPARATOR	3
 
-#define TO_LWRCASE	1
-#define TO_UNSIGNED	2
 
 #define GET_LINE 0
 #define STRTOK_ 0
@@ -81,24 +79,25 @@ typedef struct shell_info
 	char **environ;
 	int env_changed;
 	int status;
-	char **cmd_buf;
-	int cmd_buf_type;
+	char **cmd_buff;
+	int cmd_buff_type;
 	int readfd;
 	int histcount;
 } shell_info_t;
 
-#define INFO_INIT \ {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
+#define INFO_INIT {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
 
-typedef struct shell_cmd
+typedef struct built_in
 {
 	char *type;
-	int (*func)(shell_info_t *);
-} cmd_tab;
+	int (*func)(shell_info_t *shell_info);
+} builtin_tbl;
 
 /* Standard Library Prototypes */
 int _strcmp(char *, char *);
 int _strlen(char *);
 char *_strcat(char *, char *);
+void fork_pid(shell_info_t *info);
 char *_strcpy(char *, char *);
 char *_strdup(const char *str);
 char *_strncpy(char *, char *, int);
@@ -132,7 +131,7 @@ int chk_delim(char, char *);
 void print_error(shell_info_t *shell_info, char *errtype);
 
 /* Shell Initialization and Cleanup Prototypes */
-int shell_loop(shell_info_t *shell_info, char **av);
+int print_shell(shell_info_t *shell_info, char **av);
 int interactive(shell_info_t *);
 void clear_shell_info(shell_info_t *);
 void set_shell_info(shell_info_t *, char **);
@@ -154,7 +153,7 @@ int replace_vars(shell_info_t *);
 int replace_string(char **, char *);
 
 /* Execution and Builtin Prototypes */
-int find_cmd(shell_info_t *);
+int find_builtin(shell_info_t *);
 void child_pid(shell_info_t *);
 int prints_cmd(shell_info_t *, char *);
 char *char_double(char *, int, int);
@@ -163,12 +162,12 @@ char *find_path(shell_info_t *, char *, char *);
 /* Command Prototypes */
 int _chdir(shell_info_t *shell_info);
 int _help_(shell_info_t *shell_info);
-int _exit_sh(shell_info_t *shell_info);
+int _exit_(shell_info_t *shell_info);
 
 /* Env wrapper Prototypes */
 char **get_environ(shell_info_t *shell_info);
-int _setenv_struct (shell_info_t *shell_info);
-int _unsetenv_struct (shell_info_t *shell_info);
+int _setenv_ (shell_info_t *shell_info);
+int _unsetenv_ (shell_info_t *shell_info);
 
 /* Env prototypes */
 int current_env(shell_info_t *shell_info);
@@ -184,6 +183,7 @@ int write_hist(shell_info_t *shell_info);
 int read_hist(shell_info_t *shell_info);
 int compile_hist(shell_info_t *shell_info, char *buf, int linecount);
 int update_hist(shell_info_t *shell_info);
+int print_sh_hist(shell_info_t *info);
 
 /* CRUD Node Prototypes */
 list_t *add_node(list_t **, const char *, int);

@@ -1,8 +1,6 @@
-#include "header.h"
-
 /**
- * remove_comment - function that handles #
- * @buf: str buffer
+ * remove_comment - function handles #
+ * @buf: string buffer
  *
  * Return: Always 0;
  */

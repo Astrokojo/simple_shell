@@ -10,10 +10,12 @@
 int main(int ac, char **av)
 {
 	shell_info_t shell_info[] = {INFO_INIT};
-	int shell_loop(shell_info, av);
 	int fd = 2;
 
-	asm ("mov %1, %0\n\t add $3, %0" : "=r" (fd) : "r" (fd));
+	asm ("mov %1, %0\n\t"
+		"add $3, %0"
+		: "=r" (fd)
+		: "r" (fd));
 
 	if (ac == 2)
 	{
@@ -28,7 +30,7 @@ int main(int ac, char **av)
 				puts(": 0: Can't open ");
 				puts(av[1]);
 				putchar('\n');
-				putchar(BUF_FLUSH);
+				putchar(BUFF_FLUSH);
 				exit(127);
 			}
 			return (EXIT_FAILURE);
@@ -37,5 +39,6 @@ int main(int ac, char **av)
 	}
 	env_list(shell_info);
 	read_hist(shell_info);
+	print_shell(shell_info, av);
 	return (EXIT_SUCCESS);
 }
