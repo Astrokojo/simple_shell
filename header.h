@@ -40,23 +40,23 @@ typedef struct list_str
 }list_t;
 /**
  *struct shell_info - contains pseudo-argu to pass into the shell,.
- *@alias: the alias node
- *@arg: a string generated from getline containing arguements
- *@argc: the argument count
+ *@arg: a string generated from getline containing arguments
  *@argv: an array of strings generated from arg
+ *@path: a string path for the current command
+ *@argc: the argument count
  *@counter: the error count
  *@errors: the error code for exit()s
- *@env: linked_list copy of environ in the shell
- *@environ:  of environ from LL env
- *@env_changed: on if environ was changed
- *@fname: the program filename
- *@history: the history node
- *@path: a string path for the current command
  *@linecount_flag: if on count this line of input
+ *@fname: the program filename
+ *@env: linked_list copy of environ in the shell
+ *@history: the history node
+ *@alias: the alias node
+ *@environ:  of environ from LL env
+ *@env_changed: checks is environ was changed
  *@status: the return status of the last exec'd command
  *@cmd_buf: address of pointer to cmd_buf, on if chaining
  *@cmd_buf_type: CMD_type `||, &&, ;`
- *@readfd:fd from which to read input
+ *@readfd: fd from which to read input
  *@histcount: the history line number count
  */
 typedef struct shell_info
