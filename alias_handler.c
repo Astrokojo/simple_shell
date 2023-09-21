@@ -29,7 +29,7 @@ int unset_alias(shell_info_t *info, char *str)
 	c = *ptr;
 	*ptr = 0;
 	unset = del_at_index(&(info->alias),
-		get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
+		at_index(info->alias, node_starts_with(info->alias, str, -1)));
 	*ptr = c;
 	return (unset);
 }
