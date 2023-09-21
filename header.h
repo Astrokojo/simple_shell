@@ -18,7 +18,7 @@
 #define CMD_NORM	0
 #define OR		1
 #define AND 		2
-#define CMD_CHAIN	3
+#define SEPARATOR	3
 
 
 #define GET_LINE 0
