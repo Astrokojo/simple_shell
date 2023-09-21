@@ -14,7 +14,6 @@
 
 #define BUF_SIZE 1024
 #define BUF_FLUSH -1
-#define INFO_INIT {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
 #define CMD_NORM 0
 #define CMD_OR 1
 #define CMD_AND 2
@@ -80,6 +79,8 @@ typedef struct shell_info
 	int readfd;
 	int histcount;
 } shell_info_t;
+
+#define INFO_INIT \ {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
 
 typedef struct shell_cmd
 {
