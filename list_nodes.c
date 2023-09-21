@@ -16,7 +16,7 @@ ssize_t at_index(list_t *head, list_t *node)
 	{
 		if (head == node)
 			return (node_size);
-		
+
 		head = head->next;
 		node_size++;
 	}
@@ -136,14 +136,14 @@ list_t *node_starts_with(list_t *node, char *substr, char c)
 {
 	char *ptr = NULL;
 
-	while(node)
+	while (node)
 	{
 		ptr = _strstr(node->str, substr);
-		
+
 		if (ptr && ((c == -1) || (*ptr == c)))
 			return (node);
 
 		node = node->next;
 	}
-	return NULL;
+	return (NULL);
 }
