@@ -76,7 +76,7 @@ ssize_t get_input(shell_info_t *shell_info)
 		if (i >= len)
 		{
 			i = len = 0;
-			shell_info->cmd_bufff_type = CMD_NORM;
+			shell_info->cmd_buff_type = CMD_NORM;
 		}
 
 		*buf_p = p;
