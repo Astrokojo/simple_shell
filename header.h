@@ -166,8 +166,8 @@ int _exit_sh(shell_info_t *shell_info);
 
 /* Env wrapper Prototypes */
 char **get_environ(shell_info_t *shell_info);
-int _setenv_struct (shell_info_t *shell_info);
-int _unsetenv_struct (shell_info_t *shell_info);
+int _setenv_ (shell_info_t *shell_info);
+int _unsetenv_ (shell_info_t *shell_info);
 
 /* Env prototypes */
 int current_env(shell_info_t *shell_info);
