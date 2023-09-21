@@ -123,8 +123,10 @@ void *_realloc(void *, unsigned int, unsigned int);
 int freeptr(void **ptr);
 void free_str_arr(char **str_arr);
 
-/* Shell Utility prototypes */
+/* Comment handler prototype*/
 void remove_comment(char *);
+
+/* Shell Utility prototypes */
 char *_strstr(const char *,const char *);
 int chk_delim(char, char *);
 void print_error(shell_info_t *shell_info, char *errtype);
@@ -183,19 +185,20 @@ int read_hist(shell_info_t *shell_info);
 int compile_hist(shell_info_t *shell_info, char *buf, int linecount);
 int update_hist(shell_info_t *shell_info);
 
-/* Linked List_Node Prototypes */
+/* CRUD Node Prototypes */
 list_t *add_node(list_t **, const char *, int);
 list_t *add_node_end(list_t **, const char *, int);
+size_t print_list_str(const list_t *);
 int del_at_index(list_t **, unsigned int);
+void free_list(list_t **);
+
 list_t *node_starts_with(list_t *, char *, char);
 ssize_t at_index(list_t *, list_t *);
 
 /* Link List Prototypes */
-void free_list(list_t **);
 size_t list_len(const list_t *h);
 char **list_to_strings(list_t *head);
 size_t print_list(const list_t *h);
-size_t print_list_str(const list_t *);
 
 /* Signal Handling Prototypes */
 void sigintHandler(int);
