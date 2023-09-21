@@ -27,7 +27,7 @@ int main(int ac, char **av)
 				puts(": 0: Can't open ");
 				puts(av[1]);
 				putchar('\n');
-				putchar(BUF_FLUSH);
+				putchar(BUFF_FLUSH);
 				exit(127);
 			}
 			return (EXIT_FAILURE);
