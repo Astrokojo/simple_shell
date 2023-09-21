@@ -14,3 +14,4 @@ void remove_comment(char *buf)
 			buf[hash] = '\0';
 				break;
 		}
+}
