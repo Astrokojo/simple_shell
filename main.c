@@ -39,6 +39,6 @@ int main(int ac, char **av)
 	}
 	env_list(shell_info);
 	read_hist(shell_info);
-	shell_loop(shell_info, av);
+	print_shell(shell_info, av);
 	return (EXIT_SUCCESS);
 }
