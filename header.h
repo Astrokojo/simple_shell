@@ -139,7 +139,7 @@ void free_shell_info(shell_info_t *, int);
 /* Input and Parsing Prototypes */
 ssize_t get_input(shell_info_t *);
 int _getline(shell_info_t *, char **, size_t *);
-void parse_cmd(shell_info_t *);
+void cmd_path(shell_info_t *);
 int is_chain(shell_info_t *, char *, size_t *);
 void check_chain(shell_info_t *, char *, size_t *, size_t, size_t);
 
