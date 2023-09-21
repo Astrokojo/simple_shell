@@ -153,7 +153,7 @@ int replace_vars(shell_info_t *);
 int replace_string(char **, char *);
 
 /* Execution and Builtin Prototypes */
-int find_cmd(shell_info_t *);
+int find_builtin(shell_info_t *);
 void child_pid(shell_info_t *);
 int prints_cmd(shell_info_t *, char *);
 char *char_double(char *, int, int);
