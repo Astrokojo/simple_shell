@@ -94,7 +94,7 @@ void cmd_path(shell_info_t *info)
 		info->linecount_flag = 0;
 	}
 	for (element = 0, key = 0; info->arg[element]; element++)
-		if (!is_delim(info->arg[element], " \t\n"))
+		if (!chk_delim(info->arg[element], " \t\n"))
 			key++;
 	if (!key)
 		return;
