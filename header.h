@@ -14,13 +14,14 @@
 
 #define BUF_SIZE 1024
 #define BUF_FLUSH -1
-#define CMD_NORM 0
-#define CMD_OR 1
-#define CMD_AND 2
-#define CMD_CHAIN 3
 
-#define TO_LWRCASE 1
-#define TO_UNSIGNED  2
+#define CMD_NORM	0
+#define CMD_OR		1
+#define CMD_AND 	2
+#define CMD_CHAIN	3
+
+#define TO_LWRCASE	1
+#define TO_UNSIGNED	2
 
 #define GET_LINE 0
 #define STRTOK_ 0
@@ -30,13 +31,19 @@
 
 extern char **environ;
 
-/* Structs */
+/**
+* struct list_str - single linked list
+*@ i: index value
+*@str: string
+*@next: points to next node
+*/
 typedef struct list_str
 {
 	int i;
 	char *str;
 	struct list_str *next;
 }list_t;
+
 /**
  *struct shell_info - contains pseudo-argu to pass into the shell,.
  *@arg: a string generated from getline containing arguments
@@ -51,7 +58,7 @@ typedef struct list_str
  *@history: the history node
  *@alias: the alias node
  *@environ:  of environ from LL env
- *@env_changed: checks is environ was changed
+ *@env_changed: on if environ was changed
  *@status: the return status of the last exec'd command
  *@cmd_buf: address of pointer to cmd_buf, on if chaining
  *@cmd_buf_type: CMD_type `||, &&, ;`
