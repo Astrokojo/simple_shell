@@ -122,3 +122,34 @@ int replace_string(char **old_str, char *new_str)
 	*old_str = new_str;
 	return (1);
 }
+
+/**
+ *replace_alias - replaces an aliases
+ *@shell_info: ...
+ *
+ *Return: 1 Success, Else 0
+ */
+int replace_alias(shell_info_t *shell_info)
+{
+	int i;
+	list_t *node;
+	char *ptr;
+
+	for (i = 0; i < 10; i++)
+	{
+		node = node_starts_with(shell_info->alias, shell_info->argv[0], '=');
+
+		if (!node)
+			return (0);
+		free(shell_info->argv[0]);
+		ptr = _strchr(node->str, '=');
+		if (!ptr)
+			return (0);
+		ptr = _strdup(ptr + 1);
+		if (!ptr)
+			return (0);
+		shell_info->argv[0] = ptr;
+							}
+		return (1);
+}
+
