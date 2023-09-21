@@ -162,7 +162,7 @@ char *find_path(shell_info_t *, char *, char *);
 /* Command Prototypes */
 int _chdir(shell_info_t *shell_info);
 int _help_(shell_info_t *shell_info);
-int _exit_sh(shell_info_t *shell_info);
+int _exit_(shell_info_t *shell_info);
 
 /* Env wrapper Prototypes */
 char **get_environ(shell_info_t *shell_info);
