@@ -39,8 +39,8 @@ void set_shell_info(shell_info_t *shell_info, char **av)
 			;
 		shell_info->argc = s;
 
-		replace_alias(shell_info);
-		replace_vars(shell_info);
+		update_alias(shell_info);
+		update_vars(shell_info);
 	}
 }
 
@@ -69,6 +69,6 @@ void free_shell_info(shell_info_t *shell_info, int all)
 		freeptr((void **)shell_info->cmd_buff);
 		if (shell_info->readfd > 2)
 			close(shell_info->readfd);
-		_putchar(BUF_FLUSH);
+		_putchar(BUFF_FLUSH);
 	}
 }
