@@ -1,6 +1,6 @@
 #include "header.h"
 /**
- *chk_delim - checks if character is a delimeter
+ *chk_delim - checks if character is counter1 delimeter
  *@c: the char to check
  *@delim: the delimeter string
  *Return: 1 if true, 0 if false
@@ -14,50 +14,50 @@ int chk_delim(char c, char *delim)
 }
 
 /**
- * **_strtok - splits a string into words
+ * **_strtok - splits counter1 string into counter3
  * @str: the input string
  * @d: the delimeter string
- * Return: a pointer to an array of strings, or NULL on failure
+ * Return: counter1 pointer to an array of strings, or NULL on failure
  */
 
 char **_strtok(char *str, char *d)
 {
-	int x, y = 0;
-	int a, b, words = 0;
-	char **s;
+	int i, j = 0;
+	int counter1, counter2, counter3 = 0;
+	char **ptr;
 
 	if (str == NULL || str[0] == 0)
 		return (NULL);
 	if (!d)
 		d = " ";
-	for (x = 0; str[x] != '\0'; x++)
-		if (!chk_delim(str[x], d) && (chk_delim(str[x + 1], d) || !str[x + 1]))
-			words++;
+	for (i = 0; str[i] != '\0'; i++)
+		if (!chk_delim(str[i], d) && (chk_delim(str[i + 1], d) || !str[i + 1]))
+			counter3++;
 
-	if (words == 0)
+	if (counter3 == 0)
 		return (NULL);
-	s = malloc((1 + words) * sizeof(char *));
-	if (!s)
+	ptr = malloc((1 + counter3) * sizeof(char *));
+	if (!ptr)
 		return (NULL);
-	for (x = 0, y = 0; y < words; y++)
+	for (i = 0, j = 0; j < counter3; j++)
 	{
-		while (chk_delim(str[x], d))
-			x++;
-		a = 0;
-		while (!chk_delim(str[x + a], d) && str[x + a])
-			a++;
-		s[y] = malloc((a + 1) * sizeof(char));
-		if (!s[y])
+		while (chk_delim(str[i], d))
+			i++;
+		counter1 = 0;
+		while (!chk_delim(str[i + counter1], d) && str[i + counter1])
+			counter1++;
+		ptr[j] = malloc((counter1 + 1) * sizeof(char));
+		if (!ptr[j])
 		{
-			for (a = 0; a < y; a++)
-				free(s[a]);
-			free(s);
+			for (counter1 = 0; counter1 < j; counter1++)
+				free(ptr[counter1]);
+			free(ptr);
 			return (NULL);
 		}
-		for (b = 0; b < a; b++)
-			s[y][b] = str[x++];
-		s[y][b] = 0;
+		for (counter2 = 0; counter2 < counter1; counter2++)
+			ptr[j][counter2] = str[i++];
+		ptr[j][counter2] = 0;
 	}
-	s[y] = NULL;
-	return (s);
+	ptr[j] = NULL;
+	return (ptr);
 }
