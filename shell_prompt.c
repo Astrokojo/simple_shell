@@ -14,24 +14,24 @@ int print_shell(shell_info_t *info, char **av)
 
 	while (sh != -1 && builtin_cmd != -2)
 	{
-		clear_info(info);
+		clear_shell_info(info);
 		if (interactive(info))
 			_puts("$ ");
 		_puttchar(BUFF_FLUSH);
 		sh = get_input(info);
 		if (sh != -1)
 		{
-			set_info(info, av);
+			set_shell_info(info, av);
 			builtin_cmd = find_builtin(info);
 			if (builtin_cmd == -1)
 				cmd_path(info);
 		}
 		else if (interactive(info))
 			_putchar('\n');
-		free_info(info, 0);
+		free_shell_info(info, 0);
 	}
-	hist_write(info);
-	free_info(info, 1);
+	write_hist(info);
+	free_shell_info(info, 1);
 	if (!interactive(info) && info->status)
 		exit(info->status);
 	if (builtin_cmd == -2)
@@ -138,7 +138,7 @@ void fork_pid(shell_info_t *info)
 	{
 		if (execve(info->path, info->argv, get_environ(info)) == -1)
 		{
-			free_info(info, 1);
+			free_shell_info(info, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
