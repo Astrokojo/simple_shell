@@ -28,7 +28,7 @@ int unset_alias(shell_info_t *info, char *str)
 		return (1);
 	c = *ptr;
 	*ptr = 0;
-	unset = delete_node_at_index(&(info->alias),
+	unset = del_at_index(&(info->alias),
 		get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
 	*ptr = c;
 	return (unset);
