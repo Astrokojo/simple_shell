@@ -44,34 +44,6 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	free(ptr);
 	return (c);
 }
-
-/**
- *freeptr - frees a pointer
- *@ptr: pointer
- *
- *Return: 1 if freed, otherwise 0.
- */
-int freeptr(void **ptr)
-{
-	if (ptr && *ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-		return (1);
-	}
-	return (0);
-}
-
-/**
- *free_str_arr- frees an array of strings
- *@str_arr: strings to free
- */
-void free_str_arr(char **str_arr)
-{
-	char **current_str = str_arr;
-
-	if (!str_arr)
-		return;
 	while (*str_arr)
 		free(*str_arr++);
 	free(current_str);
