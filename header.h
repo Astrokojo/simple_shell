@@ -12,16 +12,14 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 
-#define BUF_SIZE 1024
-#define BUF_FLUSH -1
+#define BUFF_SIZE 1024
+#define BUFF_FLUSH -1
 
 #define CMD_NORM	0
-#define CMD_OR		1
-#define CMD_AND 	2
+#define OR		1
+#define AND 		2
 #define CMD_CHAIN	3
 
-#define TO_LWRCASE	1
-#define TO_UNSIGNED	2
 
 #define GET_LINE 0
 #define STRTOK_ 0
