@@ -97,7 +97,7 @@ typedef struct built_in
 int _strcmp(char *, char *);
 int _strlen(char *);
 char *_strcat(char *, char *);
-void fork_pid(shell_info_t *)
+void fork_pid(shell_info_t *info)
 char *_strcpy(char *, char *);
 char *_strdup(const char *str);
 char *_strncpy(char *, char *, int);
