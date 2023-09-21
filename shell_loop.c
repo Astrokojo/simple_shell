@@ -31,7 +31,6 @@ int shell_loop(shell_info_t *shell_info, char **av)
 			_putchar('\n');
 		free_shell_info(shell_info, 0);
 	}
-
 	write_hist(shell_info);
 
 	free_shell_info(shell_info, 1);
@@ -46,7 +45,8 @@ int shell_loop(shell_info_t *shell_info, char **av)
 
 		exit(shell_info->errors);
 	}
-
+	return (cmd_code);
+}
 /**
  * find_cmd - finds a cmd
  * @shell_info: shell_info struct
