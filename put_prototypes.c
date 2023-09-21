@@ -25,14 +25,14 @@ void _puts(char *str)
 int _putchar(char c)
 {
 	static int i;
-	static char buf[BUF_SIZE];
+	static char buf[BUFFF_SIZE];
 
-	if (c == BUF_FLUSH || i >= BUF_SIZE)
+	if (c == BUFFF_FLUSH || i >= BUFFF_SIZE)
 	{
 		(write(1, buf, i));
 		i = 0;
 	}
-	if (c != BUF_FLUSH)
+	if (c != BUFFF_FLUSH)
 		buf[i++] = c;
 	return (1);
 }
