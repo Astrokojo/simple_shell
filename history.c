@@ -142,7 +142,7 @@ int write_hist(shell_info_t *shell_info)
 		_putsfd(node->str, fd);
 		_putfd('\n', fd);
 	}
-	_putfd(BUF_FLUSH, fd);
+	_putfd(BUFF_FLUSH, fd);
 	close(fd);
 	return (1);
 }
