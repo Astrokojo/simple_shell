@@ -8,7 +8,7 @@
  *
  * Return: 1 if chain is delimiter, else 0
  */
-int is_cmd_chain(shell_info_ *info, char *buf, size_t *ptr)
+int is_cmd_chain(shell_info_t *info, char *buf, size_t *ptr)
 {
 	size_t checker = *ptr;
 
@@ -43,7 +43,7 @@ int is_cmd_chain(shell_info_ *info, char *buf, size_t *ptr)
  * @i: initial
  * @len: buffer length
  */
-void check_chain(shell_info_ *info, char *buf, size_t *ptr, size_t i, size_t len)
+void check_chain(shell_info_t *info, char *buf, size_t *ptr, size_t i, size_t len)
 {
 	size_t checker = *ptr;
 
@@ -73,7 +73,7 @@ void check_chain(shell_info_ *info, char *buf, size_t *ptr, size_t i, size_t len
  *
  * Return: 1 Success, Else 0
  */
-int update_alias(shell_info_ *info)
+int update_alias(shell_info_t *info)
 {
 	int i;
 	list_t *node;
@@ -117,7 +117,7 @@ int update_string(char **old, char *new)
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int update_vars(shell_info_ *info)
+int update_vars(shell_info_t *info)
 {
 	int i = 0;
 	list_t *node;
