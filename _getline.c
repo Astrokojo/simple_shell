@@ -55,7 +55,7 @@ ssize_t get_input(shell_info_t *shell_info)
 	ssize_t r = 0;
 	char **buf_p = &(shell_info->arg), *p;
 
-	_putchar(BUFF_FLUSH);
+	_putchar(BUFFF_FLUSH);
 	r = input_buf(shell_info, &buf, &len);
 	if (r == -1)
 		return (-1);
@@ -101,7 +101,7 @@ ssize_t read_buf(shell_info_t *shell_info, char *buf, size_t *i)
 
 	if (*i)
 		return (0);
-	r = read(shell_info->readfd, buf, BUFF_SIZE);
+	r = read(shell_info->readfd, buf, BUFFF_SIZE);
 	if (r >= 0)
 		*i = r;
 	return (r);
@@ -117,7 +117,7 @@ ssize_t read_buf(shell_info_t *shell_info, char *buf, size_t *i)
  */
 int _getline(shell_info_t *shell_info, char **ptr, size_t *length)
 {
-	static char buf[BUFF_SIZE];
+	static char buf[BUFFF_SIZE];
 	static size_t i, len;
 	size_t k;
 	ssize_t r = 0, s = 0;
