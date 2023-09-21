@@ -9,3 +9,4 @@ int interactive(shell_info_t *shell_info)
 {
 	return (isatty(STDIN_FILENO) && shell_info->readfd <= 2);
 }
+
