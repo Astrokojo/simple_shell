@@ -1,7 +1,7 @@
 #include "header.h"
 
 /**
- * set_alias - sets alias to a string
+ * set_alias - sets alias to al_str string
  * @shell_info: input
  * @str: the string alias
  *
@@ -57,13 +57,13 @@ int unset_alias(shell_info_t *info, char *str)
 int print_alias(list_t *node)
 {
 	char *ptr = NULL;
-	char *a = NULL;
+	char *al_str = NULL;
 
 	if (node)
 	{
 		ptr = _strchr(node->str, '=');
-		for (a = node->str; a <= ptr; a++)
-			_putchar(*a);
+		for (al_str = node->str; al_str <= ptr; al_str++)
+			_putchar(*al_str);
 		_putchar('\'');
 		_puts(ptr + 1);
 		_puts("'\n");
@@ -73,31 +73,35 @@ int print_alias(list_t *node)
 }
 
 /**
- *replace_alias - replaces an aliases
- *@shell_info: ...
- *
- *Return: 1 Success, Else 0
+ * _alias -  alias cmd
+ * @shell_info: input
+ *  Return: Always 0
  */
-int replace_alias(shell_info_t *shell_info)
+int _alias(shell_info_t *shell_info)
 {
-	int i;
-	list_t *node;
-	char *ptr;
+	int i = 0;
+	char *ptr = NULL;
+	list_t *node = NULL;
 
-	for (i = 0; i < 10; i++)
+	if (shell_info->argc == 1)
 	{
-		node = node_starts_with(shell_info->alias, shell_info->argv[0], '=');
+		node = shell_info->alias;
+		while (node)
+		{
+			print_alias(node);
+			node = node->next;
+		}
+		return (0);
+	}
+	for (i = 1; shell_info->argv[i]; i++)
+	{
+		ptr = _strchr(shell_info->argv[i], '=');
+		if (ptr)
+			set_alias(shell_info, shell_info->argv[i]);
+		else
+			print_alias(node_starts_with(shell_info->alias, shell_info->argv[i], '='));
+	}
 
-		if (!node)
-			return (0);
-		free(shell_info->argv[0]);
-		ptr = _strchr(node->str, '=');
-		if (!ptr)
-			return (0);
-		ptr = _strdup(ptr + 1);
-		if (!ptr)
-			return (0);
-		shell_info->argv[0] = ptr;
-							}
-		return (1);
+	return (0);
 }
+
