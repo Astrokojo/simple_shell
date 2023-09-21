@@ -124,7 +124,7 @@ int freeptr(void **ptr);
 void free_str_arr(char **str_arr);
 
 /* Shell Utility prototypes */
-void remove_comments(char *);
+void remove_comment(char *);
 char *_strstr(const char *,const char *);
 int chk_delim(char, char *);
 void print_error(shell_info_t *shell_info, char *errtype);
