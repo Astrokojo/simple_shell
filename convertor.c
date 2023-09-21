@@ -32,6 +32,22 @@ int _erratoi(char *str)
 	return (result * sign);
 }
 /**
+ * print_error - prints an error message
+ * @info: ...
+ * @estr: string that shows error type
+ * Return: 0 success, otherwise -1 on error
+ */
+void print_error(info_t *info, char *estr)
+{
+	_putts(info->fname);
+	_putts(": ");
+	print_d(info->counter, STDERR_FILENO);
+	_putts(": ");
+	_putts(info->argv[0]);
+	_putts(": ");
+	_putts(estr);
+}
+/**
  * print_d - function prints an int in base 10
  * @input: the input
  * @fd: the filedescriptor to write to
@@ -97,13 +113,13 @@ char *convert_number(long int num, int base, int flags)
 	unsigned long n = num;
 	static char *array;
 
-	if (!(flags & TO_UNSIGNED) && num < 0)
+	if (!(flags & 2) && num < 0)
 	{
 		n = -num;
 		sign = '-';
 
 	}
-	array = flags & TO_LWRCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	array = flags & 1 ? "0123456789abcdef" : "0123456789ABCDEF";
 
 	ptr = &buffer[sizeof(buffer) - 1];
 	*ptr = '\0';
