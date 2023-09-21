@@ -183,6 +183,7 @@ int write_hist(shell_info_t *shell_info);
 int read_hist(shell_info_t *shell_info);
 int compile_hist(shell_info_t *shell_info, char *buf, int linecount);
 int update_hist(shell_info_t *shell_info);
+int print_sh_hist(shell_info_t *info);
 
 /* CRUD Node Prototypes */
 list_t *add_node(list_t **, const char *, int);
