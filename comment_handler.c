@@ -9,7 +9,7 @@ void remove_comment(char *buf)
 	int hash;
 
 	for (hash = 0; buf[hash] != '\0'; hash++)
-		if (buf[hash] == '#' && (!hash || buf[has - 1] == ' '))
+		if (buf[hash] == '#' && (!hash || buf[hash - 1] == ' '))
 		{
 			buf[hash] = '\0';
 				break;
