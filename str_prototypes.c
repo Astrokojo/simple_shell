@@ -43,23 +43,6 @@ char *_strdup(const char *str)
 	return (dup);
 }
 
-/**
- *_strcmp - compares two strings
- *@str1: the first string
- *@str2: the second string
- *
- *Return: 0 if both strings are equal, 1 if first is greater,
- *-1 if first is lesser
- */
-int _strcmp(char *str1, char *str2)
-{
-	int i;
-
-	for (i = 0; str1[i] && str2[i] && str1[i] == str2[i]; i++)
-		;
-
-	return (str1[i] < str2[i]);
-}
 
 /**
  *_strchr - locates a character in a string
