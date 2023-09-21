@@ -131,7 +131,7 @@ int chk_delim(char, char *);
 void print_error(shell_info_t *shell_info, char *errtype);
 
 /* Shell Initialization and Cleanup Prototypes */
-int shell_loop(shell_info_t *shell_info, char **av);
+int print_shell(shell_info_t *shell_info, char **av);
 int interactive(shell_info_t *);
 void clear_shell_info(shell_info_t *);
 void set_shell_info(shell_info_t *, char **);
