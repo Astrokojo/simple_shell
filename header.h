@@ -90,7 +90,7 @@ typedef struct shell_info
 typedef struct built_in
 {
 	char *type;
-	int (*func)(shell_info_t *);
+	int (*func)(shell_info_t *shell_info);
 } builtin_tbl;
 
 /* Standard Library Prototypes */
