@@ -5,7 +5,7 @@
  *@c: the pointer to the memory area
  *@b: input
  *@n: num
- *Return: s value
+ *Return: c value
  */
 char *_memset(char *c, char b, unsigned int n)
 {
@@ -17,7 +17,7 @@ char *_memset(char *c, char b, unsigned int n)
 }
 
 /**
- *free_ptr: frees a pointer
+ *free_ptr- frees a pointer
  *@ptr: pointer
  *
  * Return: 1 Success, 0 Else
@@ -35,6 +35,7 @@ int free_ptr(void **ptr)
 /**
  * free_str_arr - frees a string of strings
  * @pp: strings to free
+ * Return: 1 if free
  */
 void free_str_arr(char **pp)
 {
